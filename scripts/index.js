@@ -1,7 +1,7 @@
 import { getRandomName, getRandomColor } from "./getRandom.js";
 import { updateMembersDOM, addMessageToListDOM, DOM } from "./getDOM.js";
 
-//declaring variables
+//declaring members array variable
 let members = [];
 
 //connect to channel
@@ -60,6 +60,7 @@ drone.on("open", (error) => {
 
   //sending message
   DOM.form.addEventListener("submit", sendMessage);
+  
   function sendMessage() {
     const value = DOM.input.value;
     if (value === "") {
