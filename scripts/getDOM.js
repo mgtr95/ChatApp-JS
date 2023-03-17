@@ -22,13 +22,31 @@ export function updateMembersDOM(members) {
   );
 }
 
+
 export function createMessageElement(text, member) {
-  const el = document.createElement("div");
-  el.appendChild(createMemberElement(member));
-  el.appendChild(document.createTextNode(text));
-  el.className = "message";
-  return el;
+  let time = new Date();
+  DOM.messages.innerHTML += `
+  <div class="message">
+    <span class="message-user">${member.clientData.name}</span>
+    <span class="message-value">${text}</span>
+  </div>
+  <span style="font-size:10px">${time.getHours()}:${time.getMinutes()}</span>
+  `
+  return el
 }
+
+//old
+// export function createMessageElement(text, member) {
+//   const el = document.createElement("div");
+//   const user = document.createElement("span")
+//   user.appendChild(document.createTextNode(member.clientData.name));
+//   user.className = "message-member"
+//   el.appendChild(user);
+//   el.appendChild(document.createTextNode(text));
+//   //if statement for left and right positioning
+//   el.className = "message";
+//   return el;
+// }
 
 export function addMessageToListDOM(text, member) {
   const el = DOM.messages;
@@ -38,3 +56,4 @@ export function addMessageToListDOM(text, member) {
     el.scrollTop = el.scrollHeight - el.clientHeight;
   }
 }
+

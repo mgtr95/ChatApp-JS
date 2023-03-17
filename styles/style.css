@@ -21,8 +21,10 @@ body {
   gap: 0.5rem;
   height: 70%;
   width: 70%;
+  max-width: 800px;
+  min-width: 500px;
   padding: 10px;
-  box-shadow: 0px 0px 65px rgb(159, 159, 159);
+  box-shadow: 0px 0px 100px rgb(142, 142, 142);
   margin: 15px;
   border-radius: 0;
 }
@@ -75,16 +77,31 @@ body {
 .messages {
   overflow: auto;
   box-shadow:  0px 0px 5px rgb(208, 208, 208) ;
+  padding: 0 .8em;
 }
-
-
 
 .message {
-  padding: 5px 0;
+  padding: 5px;
+  margin-top: .8em;
+  display: flex;
+  flex-direction: column;
+  background-color: burlywood;
+  border-radius: 10px;
+  border-top-left-radius: 2px;
+  width: auto;
+  max-width: 250px;
+  width: fit-content;
 }
-.message .member {
-  display: inline-block;
+
+.message-user {
+  font-size: 10px;
 }
+
+.message-value {
+  padding: 5px;
+}
+
+
 
 .member {
   padding: 8px;
@@ -105,12 +122,16 @@ body {
   border: 1px solid #dfdfdf;
   padding: 10px 15px;
   font-size: 16px;
-  width: 80%;
+  width: 100%;
   box-shadow:  0px 0px 5px rgb(200, 200, 200);
+  transition: background-color .5s;
+  
 }
 .message-form__button {
   padding: 10px 5px;
-  width: 10%;
+  width: 8%;
+  cursor: pointer;
+  min-width: 40px;
   height: 100%;
   background-color: rgb(100, 112, 227);
   color: white;
@@ -120,4 +141,19 @@ body {
   background-image: url('../media/send.svg');
   background-repeat: no-repeat;
   background-position: center;
+  transition: all 0.5s;
 }
+
+.message-form__input:hover {
+  background-color:rgb(244, 244, 244);
+}
+
+.message-form__input:focus {
+  outline: 2px solid rgb(168, 168, 168);
+}
+
+.message-form__button:hover {
+  transition-duration: 0.5s;
+  background-color:rgb(69, 83, 212);
+}
+
