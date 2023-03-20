@@ -2,8 +2,7 @@ import { getRandomName, getRandomColor } from "./getRandom.js";
 import {
   updateMembersDOM,
   DOM,
-  createMessageElementRight,
-  createMessageElementLeft,
+  createMessageElement
 } from "./getDOM.js";
 
 //declaring members array variable
@@ -13,7 +12,7 @@ let members = [];
 const CHANNEL_ID = "PpOGDNqHIEJBEr4Z";
 const drone = new Scaledrone(CHANNEL_ID, {
   data: {
-    // Will be sent out as clientData via events
+    //clientData
     name: getRandomName(),
     color: getRandomColor(),
   },
@@ -56,12 +55,11 @@ drone.on("open", (error) => {
 
   room.on("message", (message) => {
     const { data, clientId, member } = message;
-    if (clientId === drone.clientId) {
-      createMessageElementRight(data, member);
-    } else {
-      createMessageElementLeft(data, member);
-    }
+    const side = clientId === drone.clientId?"message-right":"message-left";
+      createMessageElement(data, member, side);
+
   });
+
   //sending message
   DOM.form.addEventListener("submit", sendMessage);
 

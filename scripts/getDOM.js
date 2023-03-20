@@ -22,10 +22,10 @@ export function updateMembersDOM(members) {
   );
 }
 
-export function createMessageElementRight(data, member) {
+export function createMessageElement(data, member, side) {
   let time = new Date();
   DOM.messages.innerHTML += `
-  <div class="message message-right">
+  <div class="message ${side}">
     <span class="message-user">${member.clientData.name}</span>
     <span class="message-value">${data}</span>
     <span style="font-size:9px;color:rgb(90, 90, 90);">${time.getHours()}:${(time.getMinutes()<10?'0':'') + time.getMinutes()}</span>
@@ -33,16 +33,6 @@ export function createMessageElementRight(data, member) {
   `;
 }
 
-export function createMessageElementLeft(data, member) {
-  let time = new Date();
-  DOM.messages.innerHTML += `
-  <div class="message message-left">
-    <span class="message-user">${member.clientData.name}</span>
-    <span class="message-value">${data}</span>
-    <span style="font-size:9px;color:rgb(90, 90, 90);">${time.getHours()}:${(time.getMinutes()<10?'0':'') + time.getMinutes()}</span>
-  </div>
-  `;
-}
 
 
 // export function addMessageToListDOM(text, member) {
@@ -52,5 +42,4 @@ export function createMessageElementLeft(data, member) {
 //   if (wasTop) {
 //     el.scrollTop = el.scrollHeight - el.clientHeight;
 //   }
-
 // }
