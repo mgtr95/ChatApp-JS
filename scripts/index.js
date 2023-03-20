@@ -1,5 +1,10 @@
 import { getRandomName, getRandomColor } from "./getRandom.js";
-import { updateMembersDOM, addMessageToListDOM, DOM } from "./getDOM.js";
+import {
+  updateMembersDOM,
+  DOM,
+  createMessageElementRight,
+  createMessageElementLeft,
+} from "./getDOM.js";
 
 //declaring members array variable
 let members = [];
@@ -49,18 +54,17 @@ drone.on("open", (error) => {
     updateMembersDOM(members);
   });
 
-  //event listener for new messages
-  room.on("data", (text, member) => {
-    if (member) {
-      addMessageToListDOM(text, member);
+  room.on("message", (message) => {
+    const { data, clientId, member } = message;
+    if (clientId === drone.clientId) {
+      createMessageElementRight(data, member);
     } else {
-      // Message is from server
+      createMessageElementLeft(data, member);
     }
   });
-
   //sending message
   DOM.form.addEventListener("submit", sendMessage);
-  
+
   function sendMessage() {
     const value = DOM.input.value;
     if (value === "") {
@@ -73,3 +77,34 @@ drone.on("open", (error) => {
     });
   }
 });
+
+
+
+
+//event listener for new messages
+// room.on("data", (text, member) => {
+//   if (member) {
+//     if (members[0].id === member.id) {
+//       createMessageElementRight(text, member);
+//     } else {
+//       createMessageElementLeft(text, member);
+//     }
+//     // addMessageToListDOM(text, member);
+//   } else {
+//     // Message is from server
+//   }
+// });
+
+// room.on("message", (message) => {
+//   const { data, clientId, member } = message;
+//   if (member) {
+//     if (clientId === drone.clientId) {
+//       createMessageElementRight(data, member);
+//     } else {
+//       createMessageElementLeft(data, member);
+//     }
+//     // addMessageToListDOM(text, member);
+//   } else {
+//     // Message is from server
+//   }
+// });

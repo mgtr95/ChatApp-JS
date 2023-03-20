@@ -7,7 +7,7 @@ export const DOM = {
 };
 
 export function createMemberElement(member) {
-  const { name } = member.clientData;
+  const { name, color } = member.clientData;
   const el = document.createElement("div");
   el.appendChild(document.createTextNode(name));
   el.className = "member";
@@ -22,38 +22,35 @@ export function updateMembersDOM(members) {
   );
 }
 
-
-export function createMessageElement(text, member) {
+export function createMessageElementRight(data, member) {
   let time = new Date();
   DOM.messages.innerHTML += `
-  <div class="message">
+  <div class="message message-right">
     <span class="message-user">${member.clientData.name}</span>
-    <span class="message-value">${text}</span>
+    <span class="message-value">${data}</span>
+    <span style="font-size:9px;color:rgb(90, 90, 90);">${time.getHours()}:${(time.getMinutes()<10?'0':'') + time.getMinutes()}</span>
   </div>
-  <span style="font-size:10px">${time.getHours()}:${time.getMinutes()}</span>
-  `
-  return el
+  `;
 }
 
-//old
-// export function createMessageElement(text, member) {
-//   const el = document.createElement("div");
-//   const user = document.createElement("span")
-//   user.appendChild(document.createTextNode(member.clientData.name));
-//   user.className = "message-member"
-//   el.appendChild(user);
-//   el.appendChild(document.createTextNode(text));
-//   //if statement for left and right positioning
-//   el.className = "message";
-//   return el;
+export function createMessageElementLeft(data, member) {
+  let time = new Date();
+  DOM.messages.innerHTML += `
+  <div class="message message-left">
+    <span class="message-user">${member.clientData.name}</span>
+    <span class="message-value">${data}</span>
+    <span style="font-size:9px;color:rgb(90, 90, 90);">${time.getHours()}:${(time.getMinutes()<10?'0':'') + time.getMinutes()}</span>
+  </div>
+  `;
+}
+
+
+// export function addMessageToListDOM(text, member) {
+//   const el = DOM.messages;
+//   const wasTop = el.scrollTop === el.scrollHeight - el.clientHeight;
+//   el.appendChild(createMessageElement(text, member));
+//   if (wasTop) {
+//     el.scrollTop = el.scrollHeight - el.clientHeight;
+//   }
+
 // }
-
-export function addMessageToListDOM(text, member) {
-  const el = DOM.messages;
-  const wasTop = el.scrollTop === el.scrollHeight - el.clientHeight;
-  el.appendChild(createMessageElement(text, member));
-  if (wasTop) {
-    el.scrollTop = el.scrollHeight - el.clientHeight;
-  }
-}
-
