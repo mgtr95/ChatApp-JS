@@ -18,12 +18,9 @@ Check out the live demo of the application: [ChatApp-JS Demo](https://jsscale-ch
 To run the ChatApp-JS locally, follow these steps:
 
 1. Clone the repository:
-`git clone https://github.com/mgtr95/ChatApp-JS.git `
-
+```git clone https://github.com/mgtr95/ChatApp-JS.git```
 2. Navigate to the project directory:
-
-`cd ChatApp-JS`
-
+```cd ChatApp-JS```
 3. Open the index.html file in your preferred web browser with live server.
 
 ## Usage
