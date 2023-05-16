@@ -76,33 +76,3 @@ drone.on("open", (error) => {
   }
 });
 
-
-
-
-//event listener for new messages
-// room.on("data", (text, member) => {
-//   if (member) {
-//     if (members[0].id === member.id) {
-//       createMessageElementRight(text, member);
-//     } else {
-//       createMessageElementLeft(text, member);
-//     }
-//     // addMessageToListDOM(text, member);
-//   } else {
-//     // Message is from server
-//   }
-// });
-
-// room.on("message", (message) => {
-//   const { data, clientId, member } = message;
-//   if (member) {
-//     if (clientId === drone.clientId) {
-//       createMessageElementRight(data, member);
-//     } else {
-//       createMessageElementLeft(data, member);
-//     }
-//     // addMessageToListDOM(text, member);
-//   } else {
-//     // Message is from server
-//   }
-// });
