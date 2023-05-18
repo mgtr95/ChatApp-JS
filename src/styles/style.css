@@ -88,7 +88,6 @@ span {
 
 .members-container,
 .messages-container {
-  /* border: 1px solid #cfcfcf; */
   padding: 15px;
   background-color: #f1f1f1;
   box-shadow: inset 0px 0px 5px rgb(208, 208, 208);

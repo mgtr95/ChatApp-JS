@@ -1,16 +1,22 @@
 {
   "name": "new-folder",
   "version": "1.0.0",
-  "description": "",
+  "description": "ChatApp-JS is a simple chat application built using HTML, CSS, and JavaScript. It leverages the Scaledrone service to enable real-time messaging between users.",
   "main": "getRandom.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "build": "webpack"
   },
   "author": "",
   "license": "ISC",
   "type": "module",
   "devDependencies": {
-    "webpack": "^5.76.1"
+    "webpack": "^5.83.1",
+    "webpack-cli": "^5.1.1"
+  },
+  "keywords": [],
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }

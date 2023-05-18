@@ -1,9 +1,9 @@
-import { getRandomName, getRandomColor } from "./getRandom.js";
+import { getRandomName, getRandomColor } from "./scripts/getRandom.js";
 import {
   updateMembersDOM,
   DOM,
-  createMessageElement
-} from "./getDOM.js";
+  createMessageElement,
+} from "./scripts/getDOM.js";
 
 //declaring members array variable
 let members = [];
@@ -55,9 +55,8 @@ drone.on("open", (error) => {
 
   room.on("message", (message) => {
     const { data, clientId, member } = message;
-    const side = clientId === drone.clientId?"message-right":"message-left";
-      createMessageElement(data, member, side);
-
+    const side = clientId === drone.clientId ? "message-right" : "message-left";
+    createMessageElement(data, member, side);
   });
 
   //sending message
@@ -75,4 +74,3 @@ drone.on("open", (error) => {
     });
   }
 });
-
